@@ -1,0 +1,11 @@
+<div>
+    <ngx-datatable class="material" [rows]="rows" [columns]="columns" [columnMode]="ColumnMode.force"
+        [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10" (activate)="onActivate($event)">
+
+        <ng-container *ngFor="let column of columns">
+            <ngx-datatable-column [prop]="column.prop" [name]="column.name" [width]="column.width">
+            </ngx-datatable-column>
+        </ng-container>
+
+    </ngx-datatable>
+</div>

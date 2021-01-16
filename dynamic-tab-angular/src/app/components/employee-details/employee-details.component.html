@@ -1,0 +1,101 @@
+<form [formGroup]="form" (submit)="submit()">
+  <mat-grid-list cols="4" rowHeight="200px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <input formControlName="employeeId" matInput placeholder="EmployeeId*" disabled>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>DOB</mat-label>
+          <input matInput [matDatepicker]="dobPicker" formControlName="dob">
+          <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+          <mat-datepicker #dobPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <input formControlName="fullName" matInput placeholder="Full Name*">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="pan" matInput placeholder="PAN">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender" placeholder="Gender">
+            <mat-option *ngFor="let gen of genderList" [value]="gen">{{gen}}</mat-option>
+          </mat-select>
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="qualification" matInput placeholder="Qualification">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <mat-label>DOJ</mat-label>
+          <input matInput [matDatepicker]="dojPicker" formControlName="doj">
+          <mat-datepicker-toggle matSuffix [for]="dojPicker"></mat-datepicker-toggle>
+          <mat-datepicker #dojPicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="email" matInput placeholder="Email">
+          <mat-error>Invalid email address.</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div style="display: flex; justify-content: center;">
+    <div style="width: 15%;">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-content: center;">
+        <button mat-raised-button color="primary" (click)="editForm('edit')" *ngIf="!isFormEditInProgress">Edit</button>
+        <button mat-raised-button color="primary" *ngIf="isFormEditInProgress" type=submit>Update</button>
+        <button mat-raised-button color="warn" (click)="editForm('cancel')" *ngIf="isFormEditInProgress">Cancel</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div style="margin-top: 1.2em; margin-bottom: 1.2em;">
+  <h2 style="display: flex; justify-content: left;margin-left: 0.5em;">Monthly Salary Details:</h2>
+  <ngx-datatable class="material" [rows]="rows" [columns]="columns" [columnMode]="ColumnMode.standard"
+    [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10">
+
+    <ng-container *ngFor="let column of columns">
+
+      <ng-container *ngIf="column.datatype == 'date'">
+        <ngx-datatable-column [prop]="column.prop" [name]="column.name" [width]="column.width">
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            {{ value | date: 'yyyy-MM-dd HH:mm:ss \'GMT\'' }}
+          </ng-template>
+        </ngx-datatable-column>
+      </ng-container>
+
+      <ng-container *ngIf="column.datatype != 'date'">
+        <ngx-datatable-column [prop]="column.prop" [name]="column.name" [width]="column.width">
+        </ngx-datatable-column>
+      </ng-container>
+
+    </ng-container>
+
+  </ngx-datatable>
+
+  <div style="display: flex; justify-content: center; margin-top: 1.2em;">
+    <div style="width: 15%;">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-content: center;">
+        <a color="primary" *ngIf="rows.length > 0" csvLink [data]="rows">Download Salary Slip (.csv)</a>
+      </div>
+    </div>
+  </div>
+</div>

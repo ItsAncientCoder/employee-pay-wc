@@ -1,0 +1,389 @@
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+
+html, body {
+    min-height: 100%;
+    overflow-y: auto;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, Helvetica, Verdana, sans-serif;
+}
+
+body::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.loading-screen {
+    position:absolute; 
+    left:50%;
+    top:50%;
+    margin-left: -3em;
+    margin-top: -3em;
+}
+
+/** BEGIN Tab Holder Styling **/
+
+ /* Style the tab */
+ .tab {
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    background-color: #fafafa;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    /*float: left;*/
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 16px;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #fafafa;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #0075c9 !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 2px solid #0075c9 !important;
+    color: white !important;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    /*background-color: mat-color($accent);*/
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    /*padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;*/
+}
+
+.tabcontent.-active {
+    display: block;
+}
+
+.tabcontent {
+    animation: fadeEffect 0.5s; /* Fading effect takes 1 second */
+}
+  
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/** END Tab Holder Styling **/
+
+
+/* BEGIN: To make ch-tabs scroll horizontally on small screens */
+
+div.main-tab-holder {
+    overflow-x: auto;
+}
+
+ul.chi-tabs {
+    white-space: nowrap;
+}
+
+/* END: To make ch-tabs scroll horizontally on small screens */
+
+.mat-button:hover {
+    background: #0075c9;
+    color: white;
+}  
+
+.mat-stroked-button:hover {
+    background: #0075c9;
+    color: white;
+}  
+
+.mat-button-toggle:hover {
+    background: #0075c9;
+    color: white;
+}
+
+.mat-menu-item:hover {
+    background: #0075c9 !important;
+    color: white;
+}
+
+// To center content in ngx-datatable rows
+.datatable-header-cell
+{
+   display: flex !important;
+   align-items: center !important;
+}
+
+.datatable-header-cell-label {
+    font-weight: bold;
+    color: black;
+}
+
+.datatable-body-cell
+{
+   display: flex !important;
+   align-items: center !important;
+}
+
+// ######################################################################
+// To make detail rows match the alternating row color of datatables
+.datatable-row-wrapper:nth-child(even) {
+    background-color: #DBE3EF !important;
+}
+
+.datatable-row-wrapper:nth-child(even) .datatable-row-detail {
+    background-color: inherit !important;
+}
+// ######################################################################
+
+
+// To make the detail row on ngx-datatable expand the width of the screen
+datatable-scroller {
+    width: 100% !important;
+}
+
+// To make datatable pager not scroll vertically
+datatable-pager ul {
+    white-space: nowrap !important;
+}
+
+datatable-footer {
+    overflow-y: hidden !important;
+}
+
+/* For case views dialog */
+
+.case-views-dialog.cdk-overlay-pane  {
+    max-width: 95vw !important;
+}
+
+.case-views-dialog .mat-dialog-container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+}
+
+/* To strip away padding on the mat-selection-list */
+.mat-list-base {
+    padding-top: 0 !important;
+}
+
+/* END For case views dialog */
+
+
+/* For add note dialog */
+
+.add-note-dialog.cdk-overlay-pane  {
+    max-width: 95vw !important;
+}
+
+.add-note-dialog .mat-dialog-container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+}
+
+/* END For add note dialog */
+
+
+/* For dispatch dialog */
+
+.dispatch-dialog.cdk-overlay-pane  {
+    max-width: 95vw !important;
+}
+
+.dispatch-dialog .mat-dialog-container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+}
+
+/* END For dispatch dialog */
+
+/* For EDB Event Dialog dialog */
+
+.edb-details-dialog.cdk-overlay-pane  {
+    max-width: 95vw !important;
+}
+
+.edb-details-dialog .mat-dialog-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+}  
+
+/* END For EDB Event Dialog dialog */
+
+/* For advanced search dialog */
+
+.advanced-search-dialog.cdk-overlay-pane  {
+    max-width: 95vw !important;
+}
+
+.advanced-search-dialog .mat-dialog-container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+}
+
+/* END For advanced search dialog */
+
+/* For search ticket dialog */
+
+.search-ticket-dialog.cdk-overlay-pane  {
+    max-width: 95vw !important;
+}
+
+.search-ticket-dialog .mat-dialog-container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+}
+
+/* END For search ticket dialog */
+
+
+/* For styling the date pickers on the advanced search dialog */
+
+.my-custom-component-small {
+    font-size: 13px !important;
+    padding-top: 1em;
+}
+
+.my-custom-component-small .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+}
+
+.my-custom-component-small .mat-form-field-infix {
+    padding: 0 !important;
+    position: inherit !important;
+    border-top: 0px !important;
+}
+
+.my-custom-component-small .mat-form-field-infix input {
+    font-size: 14px;
+}
+
+.my-custom-component-small .mat-form-field-infix .mat-form-field-label-wrapper {
+    font-size: 14px;
+}
+
+.my-custom-component-small .mat-form-field-underline {
+    bottom: 0px !important;
+}
+
+.my-custom-component-small .mat-form-field-suffix .mat-icon-button { /* to move calendar button up some */
+    vertical-align: super !important;
+}
+
+.my-custom-component-small.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.0em) scale(.75) perspective(100px) translateZ(.001px) !important;
+    -ms-transform: translateY(-1.0em) scale(.75) !important;
+}
+
+.my-custom-component-small .mat-form-field-wrapper .mat-form-field-flex {
+    padding-bottom: 5px !important;
+}
+
+/*
+::ng-deep mat-form-field.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0 !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-label {
+    top: .5em !important;
+    margin-top: .5em !important;
+}
+
+::ng-deep .mat-form-field-subscript-wrapper {
+    display: none !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: .5em !important;
+}*/
+
+/* END: For styling the date pickers on the advanced search dialog */
+
+
+/* BEGIN: Styling for ngx-datatable */
+
+// style the rows when they are hovered
+.ngx-datatable.bootstrap:not(.cell-selection) .datatable-body-row:hover, .ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover .datatable-row-group { 
+    background: #0075c9 !important;
+    color: white !important;
+}
+
+// make the text in the cells inherit the parent's color
+.ngx-datatable.material .datatable-body-row .datatable-row-group .datatable-body-cell { 
+    color: inherit !important;
+}
+
+// style rows when they are selected
+.ngx-datatable.material.single-selection .datatable-body-row.active, .ngx-datatable.material.single-selection .datatable-body-row.active .datatable-row-group, .ngx-datatable.material.multi-selection .datatable-body-row.active, .ngx-datatable.material.multi-selection .datatable-body-row.active .datatable-row-group, .ngx-datatable.material.multi-click-selection .datatable-body-row.active, .ngx-datatable.material.multi-click-selection .datatable-body-row.active .datatable-row-group {
+    background-color: #e0f3ff !important;
+    color: black !important;
+}
+
+// Color even/odd rows
+/*
+.datatable-row-even {
+    background-color: red;
+}*/
+
+.datatable-row-odd {
+    background-color: #DBE3EF;
+} 
+
+// Make text center in rows
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
+    padding: 0.5rem 1.1rem;
+}
+
+/* END: Styling for ngx-datatable */
+
+.mat-toolbar.mat-primary {
+    //background-color: #0075C9;
+    background-color: #FFFFFF;
+    color: #242526;
+}
+
+.mat-list-item:hover {
+    background: #0075c9 !important;
+    color: white !important;
+}
+
+// Give chi-checkbox some additional padding on the left & right
+.chi-checkbox {
+    margin-left: 1em;
+    margin-right: 1em;
+}

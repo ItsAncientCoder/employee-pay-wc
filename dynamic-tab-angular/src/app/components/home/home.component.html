@@ -1,0 +1,23 @@
+<div>
+    <ngx-datatable class="material" [rows]="rows" [columns]="columns" [columnMode]="ColumnMode.standard"
+        [headerHeight]="50" [footerHeight]="50" rowHeight="auto" [limit]="10" (activate)="onActivate($event)">
+
+        <ng-container *ngFor="let column of columns">
+
+            <ng-container *ngIf="column.datatype == 'date'">
+                <ngx-datatable-column [prop]="column.prop" [name]="column.name" [width]="column.width">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                        {{ value | date: 'yyyy-MM-dd HH:mm:ss \'GMT\'' }}
+                    </ng-template>
+                </ngx-datatable-column>
+            </ng-container>
+
+            <ng-container *ngIf="column.datatype != 'date'">
+                <ngx-datatable-column [prop]="column.prop" [name]="column.name" [width]="column.width">
+                </ngx-datatable-column>
+            </ng-container>
+
+        </ng-container>
+
+    </ngx-datatable>
+</div>
